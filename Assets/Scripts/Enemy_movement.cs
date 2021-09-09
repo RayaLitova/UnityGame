@@ -19,7 +19,7 @@ public class Enemy_movement : MonoBehaviour
 
     void Update()
     {
-        if(Vector2.Distance(transform.position, target.transform.position)<=5){
+        if(Vector2.Distance(new Vector2(startX, startY), target.transform.position)<=7){
             aiPath.enabled = true;
             animator.SetFloat("Speed", 1);
             
@@ -32,7 +32,7 @@ public class Enemy_movement : MonoBehaviour
                 animator.SetFloat("Speed", 0);
             }
         }
-        
+
         if(animator.GetFloat("Speed")>0.01){
             if(aiPath.enabled){
                 animator.SetFloat("X", aiPath.desiredVelocity.x);

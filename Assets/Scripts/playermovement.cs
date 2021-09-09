@@ -10,14 +10,23 @@ public class playermovement : MonoBehaviour
     public Rigidbody2D rb;
 
     private Vector2 moveDir;
+    private float oldDirX;
     public Animator animator;
 
+    public GameObject weapon;
+    public Renderer weapon_rend;
 
+    private bool once = true;
     void Update()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
         moveDir= new Vector2(moveX,moveY).normalized;
+        if(oldDirX != moveX) once = true;
+        else once = false;
+
+        if(moveX!=0)
+            oldDirX = moveX;
         
         if(moveDir.sqrMagnitude>0){
             animator.SetFloat("Horizontal", moveY);
@@ -26,7 +35,21 @@ public class playermovement : MonoBehaviour
 
         animator.SetFloat("Speed", moveDir.sqrMagnitude);
 
-
+        if(weapon_rend.enabled){
+            if(moveX==-1){
+                if(once){
+                    weapon.transform.Rotate(new Vector2(0,180)); 
+                    once = false;
+                }
+                weapon.transform.position = new Vector2(transform.position.x - 0.6f, weapon.transform.position.y);
+            }else if(moveX==1){
+                if(once){
+                    weapon.transform.Rotate(new Vector2(0,180)); 
+                    once = false;
+                }
+                weapon.transform.position = new Vector2(transform.position.x + 0.6f, weapon.transform.position.y);
+            }
+        }
     }
 
     void FixedUpdate(){

@@ -9,7 +9,7 @@ public class get_key : MonoBehaviour
     void OnMouseDown()
     {
         transform.parent = player.transform;
-        transform.position = (Vector2)player.transform.position + new Vector2(0.1f, 0.7f);
+        transform.position = (Vector2)player.transform.position + new Vector2(0.1f, 1f);
         Destroy(gameObject.GetComponent<BoxCollider2D>());
 
     }
