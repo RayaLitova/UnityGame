@@ -44,9 +44,6 @@ TagManager:
   - name: Envoironment
     uniqueID: 59831659
     locked: 0
-  - name: Items
-    uniqueID: 854030955
-    locked: 0
   - name: Enemies
     uniqueID: 289370231
     locked: 0
@@ -55,4 +52,7 @@ TagManager:
     locked: 0
   - name: player
     uniqueID: 201770859
+    locked: 0
+  - name: Items
+    uniqueID: 854030955
     locked: 0
