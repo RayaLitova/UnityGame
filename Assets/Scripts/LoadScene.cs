@@ -4,14 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour{
-
     public string SceneToLoad;
 
-    private void OnCollisionEnter2D(Collision2D collision){
+    void OnCollisionEnter2D(Collision2D collision){
+        Statics.SceneToLoad = SceneToLoad;
 
         if(collision.gameObject.name == "Player"){
-            SceneManager.LoadScene(SceneToLoad);
-        }
-    }
 
+            SceneManager.LoadSceneAsync("LoadingScreen");
+
+        }
+
+    }
+        
+    
 }

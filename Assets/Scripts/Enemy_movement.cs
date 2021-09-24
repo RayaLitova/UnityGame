@@ -10,8 +10,6 @@ public class Enemy_movement : MonoBehaviour
     public AIPath aiPath;
     public Animator animator;
 
-    public Rigidbody2D rb;
-
     public GameObject target;
     public Seeker seeker;
 
@@ -21,6 +19,7 @@ public class Enemy_movement : MonoBehaviour
     private int patroolX = 0;
     private int patroolY = 0;
     private bool isPartooling = true;
+    private bool isAttacking = false;
 
     private Vector2 nextPatroolWaypoint;
 
@@ -51,12 +50,22 @@ public class Enemy_movement : MonoBehaviour
 
     void Update()
     {
-        if(Vector2.Distance(new Vector2(startX, startY), target.transform.position)<=5){
+        if(Vector2.Distance(new Vector2(startX, startY), target.transform.position)<=0.1f){
+            Debug.Log("a");
+            isAttacking = true;
+            isPartooling = false;
+            aiPath.enabled = false;
+            animator.SetFloat("Speed", 0);
+
+        }else if(Vector2.Distance(new Vector2(startX, startY), target.transform.position)<=7f){
+            isAttacking = false;
             isPartooling = false;
             aiPath.enabled = true;
             animator.SetFloat("Speed", 1);
             
         }else{
+            animator.SetFloat("Speed", 1);
+            isAttacking = false;
             aiPath.enabled = false;
             if(!isPartooling){
                 transform.position = Vector2.MoveTowards(transform.position, new Vector2(startX, startY), 0.01f);
@@ -67,12 +76,17 @@ public class Enemy_movement : MonoBehaviour
         }
 
         if(isPartooling){
-            animator.SetFloat("Speed", 1);
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(nextPatroolWaypoint.x+(float)(transform.position.x-Math.Floor(transform.position.x)),nextPatroolWaypoint.y+(float)(transform.position.y-Math.Floor(transform.position.y))), 0.01f);
 
             if(Math.Floor(transform.position.x) == nextPatroolWaypoint.x && Math.Floor(transform.position.y) == nextPatroolWaypoint.y){
                 change_x_y();
             }
+        }
+
+        if(isAttacking){
+            
+            InvokeRepeating("attack", 2f, 2f);
+
         }
 
         if(animator.GetFloat("Speed")>0.01){
@@ -90,5 +104,9 @@ public class Enemy_movement : MonoBehaviour
         }
 
         
+    }
+
+    void attack(){
+        Debug.Log(Time.time);
     }
 }

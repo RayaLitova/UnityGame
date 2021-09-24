@@ -17,6 +17,7 @@ public class playermovement : MonoBehaviour
     public Renderer weapon_rend;
 
     private bool once = true;
+    
     void Update()
     {
         float moveX = Input.GetAxisRaw("Horizontal");

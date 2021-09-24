@@ -4,10 +4,9 @@ TODO:
 
 Current content:
 	BG to house
-	Fixed scene changing
+	fixeed enemy aipath
 	NPS 
 	fighting
-	loading screen
 	menu
 
 Planned content:
