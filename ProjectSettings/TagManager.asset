@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - StaticTag
+  - chest
   layers:
   - Default
   - TransparentFX
@@ -55,4 +57,7 @@ TagManager:
     locked: 0
   - name: Items
     uniqueID: 854030955
+    locked: 0
+  - name: Screen
+    uniqueID: 2141570139
     locked: 0

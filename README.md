@@ -4,7 +4,7 @@ TODO:
 
 Current content:
 	BG to house
-	fixeed enemy aipath
+	fixed enemy aipath
 	NPS 
 	fighting
 	menu
