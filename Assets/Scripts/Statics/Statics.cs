@@ -5,7 +5,7 @@ using UnityEngine;
 public class Statics : MonoBehaviour
 {
     public static string SceneToLoad;
-    public static int StaticFilesCount;
+    public static int StaticFilesCount = 4;
 
     void Start(){
         if(GameObject.FindGameObjectsWithTag("StaticTag").Length<=StaticFilesCount){
