@@ -15,11 +15,19 @@ public class PlayerStats : MonoBehaviour
     public static float strength = 10f;
     public static float intelect = 10f;
 
+    public static float CritRate = 20;
+    public static float CritDMG = 5;
+
+    public static float armor = 1;
+    public static float def = 1;
+
     void Start(){
-        if(GameObject.FindGameObjectsWithTag("StaticTag").Length<=Statics.StaticFilesCount){
-            DontDestroyOnLoad(gameObject);
-        }else{  
-            Destroy(gameObject);
+        if(gameObject.tag=="StaticTag"){
+            if(GameObject.FindGameObjectsWithTag("StaticTag").Length<=Statics.StaticFilesCount){
+                DontDestroyOnLoad(gameObject);
+            }else{  
+                Destroy(gameObject);
+            }
         }
     }
 }

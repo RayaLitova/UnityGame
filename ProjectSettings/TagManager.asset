@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StaticTag
   - chest
+  - enemy
   layers:
   - Default
   - TransparentFX

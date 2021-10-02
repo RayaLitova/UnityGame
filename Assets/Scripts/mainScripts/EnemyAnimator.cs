@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 using System;
+using System.Threading;
 
 public class EnemyAnimator : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class EnemyAnimator : MonoBehaviour
     private bool isAttacking = false;
 
     private Vector2 nextPatroolWaypoint;
+
+    private float nextActionTime = 0f;
+    private float period = 2f;
 
     private void change_x_y(){
         if(patroolX == 1 && patroolY == 0){
@@ -49,6 +53,11 @@ public class EnemyAnimator : MonoBehaviour
 
     void Update()
     {
+
+        if(TutorialEnemyStats.Health <= 0){
+            Destroy(gameObject);
+        }
+
         if(Vector2.Distance(transform.position, target.transform.position)<=2f){
             isAttacking = true;
             isPartooling = false;
@@ -74,6 +83,7 @@ public class EnemyAnimator : MonoBehaviour
         }
 
         if(isPartooling){
+            TutorialEnemyStats.Health = 100;
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(nextPatroolWaypoint.x+(float)(transform.position.x-Math.Floor(transform.position.x)),nextPatroolWaypoint.y+(float)(transform.position.y-Math.Floor(transform.position.y))), 0.01f);
 
             if(Math.Floor(transform.position.x) == nextPatroolWaypoint.x && Math.Floor(transform.position.y) == nextPatroolWaypoint.y){
@@ -95,7 +105,13 @@ public class EnemyAnimator : MonoBehaviour
             }
 
         }
-
         
+
+        if(isAttacking){
+            if (Time.time > nextActionTime){
+                nextActionTime += period;
+                basic_attack.Attack(gameObject, target);
+            }
+        }
     }
 }

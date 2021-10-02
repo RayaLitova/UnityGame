@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class playermovement : MonoBehaviour
 {
@@ -55,5 +56,23 @@ public class playermovement : MonoBehaviour
 
     void FixedUpdate(){
         rb.velocity = new Vector2(moveDir.x * MvSpeed, moveDir.y * MvSpeed); 
+
+        foreach(GameObject target in GameObject.FindGameObjectsWithTag("enemy")){
+            if(Vector2.Distance(target.transform.position, transform.position)<=2){
+                Fight(target);
+                break;
+            }
+        }
+    }
+
+    float nextActionTime = 0f;
+    float period = 1f;
+
+    private void Fight(GameObject target){
+        if (Time.time > nextActionTime){
+            nextActionTime += period;
+            basic_attack.Attack(gameObject, target);
+        }
+
     }
 }

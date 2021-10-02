@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class TutorialEnemyStats : MonoBehaviour
 {
-    public float Health = 100f;
-    public float strength = 3f;
+    public static float Health = 100f;
+    public static float strength = 3f;
+    public static float CritRate = 10f;
+    public static float CritDMG = 5f;
+    public static int level = 1;
+
+    public static float armor = 2;
+    public static float def = 1;
+
+
 }

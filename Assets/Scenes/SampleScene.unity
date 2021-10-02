@@ -4506,12 +4506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6585353cfaf2075428735f75ee915887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiPath: {fileID: 1729507899}
-  animator: {fileID: 555724784}
-  target: {fileID: 604523130}
-  seeker: {fileID: 1729507898}
-  startX: 1
-  startY: 0
 --- !u!1 &577788183
 GameObject:
   m_ObjectHideFlags: 0
@@ -4594,6 +4588,7 @@ GameObject:
   - component: {fileID: 604523134}
   - component: {fileID: 604523135}
   - component: {fileID: 604523136}
+  - component: {fileID: 604523138}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4748,6 +4743,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7642994, y: 1.4970173}
   m_EdgeRadius: 0
+--- !u!114 &604523138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604523130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf8e1ca85d576f41bc8c55df4547a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &647808087
 GameObject:
   m_ObjectHideFlags: 0
@@ -6416,7 +6423,7 @@ GameObject:
   - component: {fileID: 1729507900}
   m_Layer: 0
   m_Name: EnemyAI
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6607,8 +6614,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63d310381f36e384b82e9c866bbfc80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
-  strength: 3
 --- !u!114 &1729507901
 MonoBehaviour:
   m_ObjectHideFlags: 0
