@@ -19,11 +19,14 @@ public class playermovement : MonoBehaviour
 
     private bool once = true;
 
-    private float nextActionTime = 0f;
-    private float period = 1.5f;
+    private float nextActionTime = 2f;
+    private float period = 1f;
 
     public static float moveX;
     public static float moveY;
+
+    private bool isFighting = false;
+
     
     void Update()
     {
@@ -58,6 +61,8 @@ public class playermovement : MonoBehaviour
                 weapon.transform.position = new Vector2(transform.position.x + 0.6f, weapon.transform.position.y);
             }
         }
+
+        if(!isFighting) nextActionTime=Time.time+period;
     }
 
     void FixedUpdate(){
@@ -65,8 +70,11 @@ public class playermovement : MonoBehaviour
 
         foreach(GameObject target in GameObject.FindGameObjectsWithTag("enemy")){
             if(Vector2.Distance(target.transform.position, transform.position)<=2){
+                isFighting = true;
                 Fight(target);
                 break;
+            }else{
+                isFighting=false;
             }
         }
     }

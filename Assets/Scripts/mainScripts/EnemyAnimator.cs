@@ -23,8 +23,8 @@ public class EnemyAnimator : MonoBehaviour
 
     private Vector2 nextPatroolWaypoint;
 
-    private float nextActionTime = 0f;
-    private float period = 2f;
+    private float nextActionTime = 3f;
+    private float period = 1.5f;
 
     private void change_x_y(){
         if(patroolX == 1 && patroolY == 0){
@@ -53,7 +53,8 @@ public class EnemyAnimator : MonoBehaviour
 
     void Update()
     {
-
+        if(!isAttacking) nextActionTime = Time.time+period;
+        
         if(TutorialEnemyStats.Health <= 0){
             Destroy(gameObject);
             SampleScene_stage.isEnemyDead = true;
