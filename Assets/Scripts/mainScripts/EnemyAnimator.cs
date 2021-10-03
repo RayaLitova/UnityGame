@@ -50,16 +50,11 @@ public class EnemyAnimator : MonoBehaviour
      void Start(){
         change_x_y();
     }
-    
-    IEnumerator wait(){
-        yield return new WaitForSecondsRealtime(1);
-    }
 
     void Update()
     {
 
         if(TutorialEnemyStats.Health <= 0){
-            wait();
             Destroy(gameObject);
             SampleScene_stage.isEnemyDead = true;
         }

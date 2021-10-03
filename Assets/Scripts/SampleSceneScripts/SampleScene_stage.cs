@@ -16,6 +16,7 @@ public class SampleScene_stage : MonoBehaviour
     public static bool isKeyPicked = false;
     public static bool isEnemyDead = false;
     public static bool isWandTaken = false;
+    public static bool isWandRotated = false;
 
     
     void Start(){
@@ -40,21 +41,11 @@ public class SampleScene_stage : MonoBehaviour
                 weapon.transform.parent = player.transform;
                 weapon.transform.position = (Vector2)player.transform.position + new Vector2(0.6f, -0.3f);
                 Destroy(weapon.GetComponent<BoxCollider2D>());
+                weapon.transform.Rotate(new Vector2(0,180)); 
             }
 
             if(isEnemyDead){
                 Destroy(enemy);
-            }
-        }
-
-        if(SceneManager.GetActiveScene().name == "HouseScene"){
-            if(isWandTaken){
-                Destroy(GameObject.FindGameObjectsWithTag("chest")[0]);
-                weapon.transform.parent = player.transform;
-                weapon.transform.position = (Vector2)player.transform.position + new Vector2(0.6f, -0.3f);
-                Destroy(weapon.GetComponent<BoxCollider2D>());
-                weapon.enabled = true;
-                weapon.transform.Rotate(new Vector2(0,180)); 
             }
         }
     }

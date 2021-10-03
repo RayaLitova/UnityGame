@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
 
-    float MaxHealth = 100f;
-    float MaxMana = 100f;
+    public static float MaxHealth = 100f;
+    public static float MaxMana = 100f;
 
     public static float Health = 100f;
     public static float Mana = 100f;

@@ -11,7 +11,7 @@ public class playermovement : MonoBehaviour
     public Rigidbody2D rb;
 
     private Vector2 moveDir;
-    private float oldDirX;
+    private float oldDirX = 1;
     public Animator animator;
 
     public GameObject weapon;
@@ -21,11 +21,14 @@ public class playermovement : MonoBehaviour
 
     private float nextActionTime = 0f;
     private float period = 1.5f;
+
+    public static float moveX;
+    public static float moveY;
     
     void Update()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        moveX = Input.GetAxisRaw("Horizontal");
+        moveY = Input.GetAxisRaw("Vertical");
         moveDir= new Vector2(moveX,moveY).normalized;
         if(oldDirX != moveX) once = true;
         else once = false;

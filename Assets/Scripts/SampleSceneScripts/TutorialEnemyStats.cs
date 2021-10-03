@@ -16,12 +16,4 @@ public class TutorialEnemyStats : MonoBehaviour
     private float nextActionTime = 0f;
     private float period = 1f;
 
-    void Update(){
-        if (Time.time > nextActionTime){
-            nextActionTime += period;
-            Debug.Log(Health);        
-        }
-        
-    }
-
 }

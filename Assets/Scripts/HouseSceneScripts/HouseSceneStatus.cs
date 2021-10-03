@@ -24,6 +24,7 @@ public class HouseSceneStatus : MonoBehaviour
                 weapon.transform.parent = player.transform;
                 weapon.transform.position = (Vector2)player.transform.position + new Vector2(0.6f, -0.3f);
                 Destroy(weapon.GetComponent<BoxCollider2D>());
+                weapon.transform.Rotate(new Vector2(0,180)); 
             }
         }
     }

@@ -17,6 +17,7 @@ public class takebox : MonoBehaviour
         Destroy(weapon.GetComponent<BoxCollider2D>());
         weapon_rend.enabled = true;
         collider.enabled = true;
-        weapon.transform.Rotate(new Vector2(0,180)); 
+        if(playermovement.moveX!=-1)
+            weapon.transform.Rotate(new Vector2(0,180)); 
     }
 }
