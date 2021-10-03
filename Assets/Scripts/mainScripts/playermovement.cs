@@ -18,6 +18,9 @@ public class playermovement : MonoBehaviour
     public Renderer weapon_rend;
 
     private bool once = true;
+
+    private float nextActionTime = 0f;
+    private float period = 1.5f;
     
     void Update()
     {
@@ -65,8 +68,7 @@ public class playermovement : MonoBehaviour
         }
     }
 
-    float nextActionTime = 0f;
-    float period = 1f;
+    
 
     private void Fight(GameObject target){
         if (Time.time > nextActionTime){

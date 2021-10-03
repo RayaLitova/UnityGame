@@ -13,5 +13,15 @@ public class TutorialEnemyStats : MonoBehaviour
     public static float armor = 2;
     public static float def = 1;
 
+    private float nextActionTime = 0f;
+    private float period = 1f;
+
+    void Update(){
+        if (Time.time > nextActionTime){
+            nextActionTime += period;
+            Debug.Log(Health);        
+        }
+        
+    }
 
 }

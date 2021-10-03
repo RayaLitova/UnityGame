@@ -5630,6 +5630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1588827534}
+  player: {fileID: 919080583}
 --- !u!114 &1588827534
 MonoBehaviour:
   m_ObjectHideFlags: 0

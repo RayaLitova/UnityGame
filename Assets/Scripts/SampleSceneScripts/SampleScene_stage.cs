@@ -14,7 +14,7 @@ public class SampleScene_stage : MonoBehaviour
 
     public static bool isFlowerPicked = false;
     public static bool isKeyPicked = false;
-    //public static bool isEnemyAlive = true;
+    public static bool isEnemyDead = false;
     public static bool isWandTaken = false;
 
     
@@ -40,6 +40,10 @@ public class SampleScene_stage : MonoBehaviour
                 weapon.transform.parent = player.transform;
                 weapon.transform.position = (Vector2)player.transform.position + new Vector2(0.6f, -0.3f);
                 Destroy(weapon.GetComponent<BoxCollider2D>());
+            }
+
+            if(isEnemyDead){
+                Destroy(enemy);
             }
         }
 

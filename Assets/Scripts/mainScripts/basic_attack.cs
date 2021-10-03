@@ -13,6 +13,7 @@ public class basic_attack : MonoBehaviour
             dmg = PlayerStats.strength + PlayerStats.level;
             if(NextFloat(1,100)<=PlayerStats.CritRate){
                 dmg+=NextFloat(1,10)* PlayerStats.CritDMG;
+                Debug.Log("Crit");
             }
         }else{
             dmg = TutorialEnemyStats.strength + TutorialEnemyStats.level;
