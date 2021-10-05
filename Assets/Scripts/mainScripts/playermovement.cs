@@ -75,6 +75,8 @@ public class playermovement : MonoBehaviour
                 break;
             }else{
                 isFighting=false;
+                Player_attack.allowFight = false;
+
             }
         }
     }
@@ -84,8 +86,9 @@ public class playermovement : MonoBehaviour
     private void Fight(GameObject target){
         if (Time.time > nextActionTime){
             nextActionTime += period;
-            basic_attack.Attack(gameObject, target);
+            //basic_attack.Attack(gameObject, target);
         }
+        Player_attack.allowFight = true;
 
     }
 }
