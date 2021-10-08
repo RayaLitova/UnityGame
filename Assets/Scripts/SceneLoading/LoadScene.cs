@@ -12,8 +12,11 @@ public class LoadScene : MonoBehaviour{
         Statics.SceneToLoad = SceneToLoad;
 
         if(collision.gameObject.name == "Player"){
-            if(SceneManager.GetActiveScene().name == "SampleScene" && SampleScene_stage.isKeyPicked == true)
+            if(SceneManager.GetActiveScene().name == "SampleScene" && SampleScene_stage.isKeyPicked == true){
+                if(key.scene.IsValid())
+                    Destroy(key);
                 SceneManager.LoadSceneAsync("LoadingScreen");
+            }
 
             if(SceneManager.GetActiveScene().name != "SampleScene")
                 SceneManager.LoadSceneAsync("LoadingScreen");

@@ -21,6 +21,9 @@ public class PlayerStats : MonoBehaviour
     public static float armor = 1;
     public static float def = 1;
 
+    public static Dictionary<string, GameObject> inventory = new Dictionary<string, GameObject>(); 
+    public static Dictionary<string, GameObject> equipment = new Dictionary<string, GameObject>(); 
+
     void Start(){
         if(gameObject.tag=="StaticTag"){
             if(GameObject.FindGameObjectsWithTag("StaticTag").Length<=Statics.StaticFilesCount){
@@ -29,5 +32,11 @@ public class PlayerStats : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+
+        if(inventory.ContainsKey("weapon")){
+            strength+=inventory["weapon"].GetComponent<WeaponStats>().strength;
+
+        }
+        Debug.Log(strength);
     }
 }

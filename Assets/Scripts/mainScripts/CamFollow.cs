@@ -5,11 +5,16 @@ using UnityEngine;
 public class CamFollow : MonoBehaviour
 {
 
-    public Transform target;
+    public GameObject target;
     public Vector3 offset;
+
+    void Start(){
+
+        target = GameObject.Find("Player");
+    }
 
     void FixedUpdate()
     {
-        transform.position=target.position + offset;
+        transform.position=target.transform.position + offset;
     }
 }

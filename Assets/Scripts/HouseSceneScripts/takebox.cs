@@ -9,8 +9,18 @@ public class takebox : MonoBehaviour
     public BoxCollider2D collider;
     public GameObject player;
 
-    private void OnCollisionEnter2D(Collision2D other){
+
+    void Start(){
+        player = GameObject.Find("Player");
+        weapon = GameObject.Find("Wand1");
+        weapon_rend = weapon.GetComponent<Renderer>();
+    }
+
+    public void OnCollisionEnter2D(Collision2D other){
+        Debug.Log("a");
         SampleScene_stage.isWandTaken = true;
+        PlayerStats.inventory.Add("weapon", weapon);
+        Debug.Log(PlayerStats.inventory);
         Destroy(gameObject, 0.3f);
         weapon.transform.parent = player.transform;
         weapon.transform.position = (Vector2)player.transform.position + new Vector2(0.6f, -0.3f);

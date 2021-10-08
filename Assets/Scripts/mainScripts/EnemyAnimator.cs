@@ -48,6 +48,7 @@ public class EnemyAnimator : MonoBehaviour
     }
 
      void Start(){
+        target = GameObject.Find("Player");
         change_x_y();
     }
 
