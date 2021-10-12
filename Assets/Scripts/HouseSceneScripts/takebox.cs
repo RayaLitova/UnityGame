@@ -16,18 +16,19 @@ public class takebox : MonoBehaviour
         weapon_rend = weapon.GetComponent<Renderer>();
     }
 
-    public void OnCollisionEnter2D(Collision2D other){
-        Debug.Log("a");
-        SampleScene_stage.isWandTaken = true;
-        PlayerStats.inventory.Add("weapon", weapon);
-        Debug.Log(PlayerStats.inventory);
-        Destroy(gameObject, 0.3f);
-        weapon.transform.parent = player.transform;
-        weapon.transform.position = (Vector2)player.transform.position + new Vector2(0.6f, -0.3f);
-        Destroy(weapon.GetComponent<BoxCollider2D>());
-        weapon_rend.enabled = true;
-        collider.enabled = true;
-        if(playermovement.moveX!=-1)
-            weapon.transform.Rotate(new Vector2(0,180)); 
+    public void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.name == "Player"){
+            SampleScene_stage.isWandTaken = true;
+            PlayerStats.inventory.Add("weapon", weapon);
+            Debug.Log(PlayerStats.inventory);
+            Destroy(gameObject, 0.3f);
+            weapon.transform.parent = player.transform;
+            weapon.transform.position = (Vector2)player.transform.position + new Vector2(0.6f, -0.3f);
+            Destroy(weapon.GetComponent<BoxCollider2D>());
+            weapon_rend.enabled = true;
+            collider.enabled = true;
+            if(playermovement.moveX!=-1)
+                weapon.transform.Rotate(new Vector2(0,180)); 
+        }
     }
 }

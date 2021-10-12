@@ -10,7 +10,7 @@ public class EnemyAnimator : MonoBehaviour
     public AIPath aiPath;
     public Animator animator;
 
-    public GameObject target;
+    private GameObject target;
     public Seeker seeker;
 
     public int startX;
