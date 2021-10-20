@@ -24,34 +24,38 @@ public class HouseEnemyAI : MonoBehaviour
     void Update(){
         if(!isStopped){
             if(Vector2.Distance(transform.position, player.transform.position)<=3){
+                isStopped=true;
                 StartCoroutine(ChargeAttack());
             }else{
                 transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 0.005f);
             }
-        }     
+        }
+        Debug.Log(HouseSceneStatus.CanAttack);
     }
 
     void Attack(){
         charge.GetComponent<Renderer>().enabled = false;
         //collision with projectile
-        if(Vector2.Distance(transform.position, player.transform.position)<=3){
+
+        if(HouseSceneStatus.CanAttack){
+            Debug.Log("a");
             basic_attack.Attack(gameObject, player);
         }
         isStopped = false;
 
     }
     IEnumerator ChargeAttack(){
-        while(!check())
-            charge.RotateAround(transform.position, new Vector3(0,0,1), 1f); 
+        Vector2 pos = player.transform.position;
+        while(!check(pos))
+            charge.RotateAround(transform.position, new Vector3(0,0,1), 0.1f); 
         charge.GetComponent<Renderer>().enabled = true;
-        isStopped = true;
         yield return new WaitForSeconds(3);
         Attack();
     }
 
-    bool check(){
-        bool A=Mathf.Round(player.transform.position.x - charge.position.x) / Mathf.Round(transform.position.x - charge.position.x) == Mathf.Round(player.transform.position.y - charge.position.y) / Mathf.Round(transform.position.y - charge.position.y);
-        Vector2 medianPoint = (player.transform.position + transform.position) / 2f;
+    bool check(Vector2 pos){
+        bool A=Mathf.Round(pos.x - charge.position.x) / Mathf.Round(transform.position.x - charge.position.x) == Mathf.Round(pos.y - charge.position.y) / Mathf.Round(transform.position.y - charge.position.y);
+        Vector2 medianPoint = (pos + (Vector2)transform.position) / 2f;
         bool X = (charge.position.x>=transform.position.x) == (medianPoint.x>=transform.position.x);
         bool Y = (charge.position.y>=transform.position.y) == (medianPoint.y>=transform.position.y);
         return A && (X && Y);

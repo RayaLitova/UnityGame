@@ -10,6 +10,7 @@ public class HouseSceneStatus : MonoBehaviour
     public GameObject player;
     public static int SpidersKilled = 0;
     public static int maxSpiders = 5;
+    public static bool CanAttack = false;
     
     void Start(){
         player = GameObject.Find("Player");

@@ -20,9 +20,9 @@ public class move_inventory : MonoBehaviour
         transform.position = new Vector2(mousePos.x - delX, mousePos.y - delY);
     }
 
-     void OnCollisionEnter2D(Collision2D collision){
+    void OnCollisionEnter2D(Collision2D collision){
          if(collision.gameObject.layer == 0 || collision.gameObject.layer == 13){
              Physics2D.IgnoreCollision( collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-       }
- } 
+        }
+    } 
 }

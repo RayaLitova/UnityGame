@@ -22,8 +22,19 @@ public class LoadScene : MonoBehaviour{
                 SceneManager.LoadSceneAsync("LoadingScreen");
             }
 
-            if(SceneManager.GetActiveScene().name != "SampleScene")
-                SceneManager.LoadSceneAsync("LoadingScreen");
+            if(SceneManager.GetActiveScene().name == "HouseScene"){
+                try{
+                    key = GameObject.Find("web");
+                    if(!key.GetComponent<Renderer>().enabled)
+                        SceneManager.LoadSceneAsync("LoadingScreen");
+                }catch(Exception e){
+                     SceneManager.LoadSceneAsync("LoadingScreen");
+                }
+               
+
+            }
+
+                
 
         }
 
